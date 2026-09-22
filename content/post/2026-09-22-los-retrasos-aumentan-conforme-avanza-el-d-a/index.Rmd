@@ -1,0 +1,45 @@
+---
+title: "Los retrasos aumentan conforme avanza el día"
+date: 2026-09-22
+---
+
+```{r setup, include=FALSE}
+library(dplyr)
+library(ggplot2)
+library(nycflights13)
+```
+
+## ¿Existe un patrón durante el día?
+
+Calculamos el retraso promedio según la hora programada de salida.
+
+```{r}
+delay_hour <- flights |>
+  filter(!is.na(dep_delay)) |>
+  group_by(hour) |>
+  summarise(
+    retraso_promedio = mean(dep_delay),
+    vuelos = n(),
+    .groups = "drop"
+  )
+```
+
+```{r}
+ggplot(delay_hour, aes(hour, retraso_promedio)) +
+  geom_line() +
+  geom_point() +
+  labs(
+    title = "Los retrasos tienden a aumentar durante el día",
+    x = "Hora programada",
+    y = "Retraso promedio (min)"
+  ) +
+  theme_minimal()
+```
+
+## Interpretación
+
+El retraso promedio presenta un patrón creciente conforme avanza el día.
+
+Este patrón representa una asociación observada en los datos y no demuestra por sí mismo causalidad.
+
+[Explorar dashboard](/dashboard/)

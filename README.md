@@ -2,7 +2,7 @@
 
 En esta práctica construiremos un sitio con **Blogdown**, utilizaremos **Git** para controlar versiones, **GitHub** para almacenar el proyecto y **Netlify** para publicar automáticamente el sitio.
 
-Este repo genera el sitio `nycflights.netlify.app`.
+Este repo genera el sitio [nycflights-blogdown.netlify.app](https://nycflights-blogdown.netlify.app/).
 
 El flujo general será:
 
